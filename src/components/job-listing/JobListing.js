@@ -1,23 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useJobs } from '../../hooks/jobs.hook';
 
 import JobCard from '../job-card/JobCard';
 
-const Button = styled.button`
-  color: red;
-`;
-
 const JobListing = () => {
+  const [jobs, isLoading] = useJobs();
+
+  console.log({ jobs })
 
   return (
     <div>
-      hey
-      <Button>click me</Button>
-
+      {isLoading && ('Loading...')}
       <JobCard />
     </div>
   );
-
 }
 
 export default JobListing;
