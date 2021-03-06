@@ -13,11 +13,13 @@ export function useJobs() {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(async () => {
-    setIsLoading(true);
-    const jobsData = await getJobs();
-    setJobs(jobsData);
-    setIsLoading(false);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const jobsData = await getJobs();
+      setJobs(jobsData);
+      setIsLoading(false);
+    })();
   }, []);
 
   return [jobs, isLoading];

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useJobs } from '../../hooks/jobs.hook';
 
@@ -12,7 +11,11 @@ const JobListing = () => {
   return (
     <div>
       {isLoading && ('Loading...')}
-      <JobCard />
+      {!isLoading && (
+        jobs.map(j => (
+          <JobCard key={j.id} jobPosting={j} />
+        ))
+      )}
     </div>
   );
 }
