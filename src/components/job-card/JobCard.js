@@ -9,6 +9,12 @@ const Card = styled.div`
   box-shadow: 0 0 5px 5px black;
 `;
 
+const TagButton = styled.button`
+  backgroundColor: #eee;
+  padding: 8px;
+  border-radius: 4px;
+`;
+
 const JobCard = ({ jobPosting }) => {
   const {
     id,
@@ -17,14 +23,13 @@ const JobCard = ({ jobPosting }) => {
     new: isNew,
     featured,
     position,
-    role,
-    level,
     postedAt,
     contract,
     location,
-    languages,
-    tools,
+    tags,
   } = jobPosting;
+
+  const onTagClick = () => {}; 
 
   return (
     <Card>
@@ -44,7 +49,11 @@ const JobCard = ({ jobPosting }) => {
         {location}
       </div>
 
-      {/* tags */}
+      <div>
+        {tags.map(t => (
+          <TagButton key={t.value} type="button" onClick={() => onTagClick(t)}>{t.value}</TagButton>
+        ))}
+      </div>
 
     </Card>
   );
