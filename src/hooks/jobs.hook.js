@@ -9,7 +9,7 @@ function getJobs() {
   });
 }
 
-export function useJobs() {
+export function useJobs(transformJobs) {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +17,7 @@ export function useJobs() {
     (async () => {
       setIsLoading(true);
       const jobsData = await getJobs();
-      setJobs(jobsData);
+      setJobs(transformJobs(jobsData));
       setIsLoading(false);
     })();
   }, []);
