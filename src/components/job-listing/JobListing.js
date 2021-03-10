@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useJobs } from '../../hooks/jobs.hook';
 
 import JobCard from '../job-card/JobCard';
+import SearchBar from '../search-bar/SearchBar';
 
 const transformJobs = (jobsData) => {
   return jobsData.map(j => {
@@ -18,13 +19,24 @@ const transformJobs = (jobsData) => {
   });
 };
 
+const testTags = [
+  { type: 'level', value: 'Senior' },
+  { type: 'level', value: 'Junior' },
+];
+
 const JobListing = () => {
   const [jobs, isLoading] = useJobs(transformJobs);
 
   console.log({ jobs })
 
+  const onTagRemove = (tag) => {
+    console.log({ tag })
+  };
+
   return (
     <div>
+      <SearchBar tags={testTags} onTagRemove={onTagRemove} />
+      
       {isLoading && ('Loading...')}
       {!isLoading && (
         jobs.map(j => (
