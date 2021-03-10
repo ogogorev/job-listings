@@ -40,9 +40,17 @@ const JobListing = () => {
     }
   };
 
+  const removeAllTags = () => {
+    setSelectedTags([]);
+  };
+
   return (
     <div>
-      <SearchBar tags={selectedTags} onTagRemove={removeTag} />
+      <SearchBar
+        tags={selectedTags} 
+        onTagRemove={removeTag}
+        onClearButtonClick={removeAllTags}
+      />
 
       {isLoading && ('Loading...')}
       {!isLoading && (

@@ -17,7 +17,17 @@ const TagContainer = styled.div`
   margin-right: 4px;
 `;
 
-const SearchBar = ({ tags, onTagRemove }) => {
+const ClearButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
   return (
     <Container>
       {tags.map(t => (
@@ -28,6 +38,8 @@ const SearchBar = ({ tags, onTagRemove }) => {
           />
         </TagContainer>
       ))}
+
+      {!!tags.length && (<ClearButton onClick={onClearButtonClick}>Clear</ClearButton>)}
     </Container>
   );
 };
