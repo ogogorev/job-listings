@@ -14,6 +14,7 @@ const RemoveButton = styled.button`
   padding: 4px;
   border: none;
   border-radius: 0 2px 2px 0;
+  cursor: pointer;
 `;
 
 const SearchBarTag = ({ tag, onTagRemove }) => {

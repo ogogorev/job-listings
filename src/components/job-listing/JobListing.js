@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import { useJobs } from '../../hooks/jobs.hook';
 
+import { useJobs } from '../../hooks/jobs.hook';
 import JobCard from '../job-card/JobCard';
 import SearchBar from '../search-bar/SearchBar';
 
@@ -19,28 +20,34 @@ const transformJobs = (jobsData) => {
   });
 };
 
-const testTags = [
-  { type: 'level', value: 'Senior' },
-  { type: 'level', value: 'Junior' },
-];
-
 const JobListing = () => {
   const [jobs, isLoading] = useJobs(transformJobs);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   console.log({ jobs })
 
-  const onTagRemove = (tag) => {
-    console.log({ tag })
+  const addTag = (tag) => {
+    if (selectedTags.map(t => t.value).indexOf(tag.value) < 0) {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
+
+  const removeTag = (tag) => {
+    const tagToRemoveI = selectedTags.findIndex(t => t.value === tag.value);
+    if (tagToRemoveI > -1) {
+      selectedTags.splice(tagToRemoveI, 1);
+      setSelectedTags([...selectedTags]);
+    }
   };
 
   return (
     <div>
-      <SearchBar tags={testTags} onTagRemove={onTagRemove} />
-      
+      <SearchBar tags={selectedTags} onTagRemove={removeTag} />
+
       {isLoading && ('Loading...')}
       {!isLoading && (
         jobs.map(j => (
-          <JobCard key={j.id} jobPosting={j} />
+          <JobCard key={j.id} jobPosting={j} onTagClick={addTag} />
         ))
       )}
     </div>

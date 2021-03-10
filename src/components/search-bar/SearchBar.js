@@ -21,7 +21,7 @@ const SearchBar = ({ tags, onTagRemove }) => {
   return (
     <Container>
       {tags.map(t => (
-        <TagContainer>
+        <TagContainer key={t.value}>
           <SearchBarTag
             tag={t}
             onTagRemove={() => onTagRemove(t)}
