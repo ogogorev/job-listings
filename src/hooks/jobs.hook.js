@@ -9,7 +9,21 @@ function getJobs() {
   });
 }
 
-export function useJobs(transformJobs) {
+// const TAG_PROPS = ['role', 'level', 'languages', 'tools'];
+
+const transformJob = (jobData) => {
+  return {
+    ...jobData,
+    tags: [
+      { type: 'role', value: jobData.role },
+      { type: 'level', value: jobData.level },
+      ...jobData.languages.map(l => ({ type: 'language', value: l })),
+      ...jobData.tools.map(t => ({ type: 'tool', value: t })),
+    ],
+  };
+};
+
+export function useJobs() {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +31,7 @@ export function useJobs(transformJobs) {
     (async () => {
       setIsLoading(true);
       const jobsData = await getJobs();
-      setJobs(transformJobs(jobsData));
+      setJobs(jobsData.map(j => ({ data: transformJob(j), })));
       setIsLoading(false);
     })();
   }, []);
