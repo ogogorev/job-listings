@@ -5,6 +5,10 @@ import { useJobs } from '../../hooks/jobs.hook';
 import JobCard from '../job-card/JobCard';
 import SearchBar from '../search-bar/SearchBar';
 
+const Container = styled.div`
+  margin: 24px;
+`;
+
 const JobListing = () => {
   const [jobs, isLoading, filterByTags] = useJobs();
   const [selectedTags, setSelectedTags] = useState([]);
@@ -34,7 +38,7 @@ const JobListing = () => {
   }, [selectedTags]);
 
   return (
-    <div>
+    <Container>
       <SearchBar
         tags={selectedTags} 
         onTagRemove={removeTag}
@@ -47,7 +51,7 @@ const JobListing = () => {
           !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
         ))
       )}
-    </div>
+    </Container>
   );
 }
 
