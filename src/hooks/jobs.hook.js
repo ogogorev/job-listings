@@ -5,20 +5,18 @@ function getJobs() {
   return new Promise((res, rej) => {
     setTimeout(() => {
       res(jobsData);
-    }, 2500)
+    }, 500)
   });
 }
-
-// const TAG_PROPS = ['role', 'level', 'languages', 'tools'];
 
 const transformJob = (jobData) => {
   return {
     ...jobData,
     tags: [
-      { type: 'role', value: jobData.role },
-      { type: 'level', value: jobData.level },
-      ...jobData.languages.map(l => ({ type: 'language', value: l })),
-      ...jobData.tools.map(t => ({ type: 'tool', value: t })),
+      jobData.role,
+      jobData.level,
+      ...jobData.languages,
+      ...jobData.tools,
     ],
   };
 };
@@ -31,10 +29,28 @@ export function useJobs() {
     (async () => {
       setIsLoading(true);
       const jobsData = await getJobs();
-      setJobs(jobsData.map(j => ({ data: transformJob(j), })));
+      setJobs(jobsData.map(j => ({ data: transformJob(j), isVisible: true })));
       setIsLoading(false);
     })();
   }, []);
 
-  return [jobs, isLoading];
+  const filterByTags = (tags) => {
+    for (let j of jobs) {
+      j.isVisible = true;
+      
+      // OR
+      // if (tags.length > 0 && !j.data.tags.some(t => tags.indexOf(t) > -1)) {
+      //   j.isVisible = false;
+      // }
+
+      // AND
+      if (tags.length > 0 && !tags.every(t => j.data.tags.indexOf(t) > -1)) {
+        j.isVisible = false;
+      }
+    }
+    
+    setJobs([...jobs]);
+  };
+
+  return [jobs, isLoading, filterByTags];
 }

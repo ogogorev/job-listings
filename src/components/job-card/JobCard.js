@@ -51,10 +51,10 @@ const JobCard = ({ jobPosting, onTagClick }) => {
       <div>
         {tags.map(t => (
           <TagButton
-            key={t.value} 
+            key={t} 
             type="button"
             onClick={() => onTagClick(t)}
-          >{t.value}</TagButton>
+          >{t}</TagButton>
         ))}
       </div>
 

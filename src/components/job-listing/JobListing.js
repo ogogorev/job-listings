@@ -6,19 +6,19 @@ import JobCard from '../job-card/JobCard';
 import SearchBar from '../search-bar/SearchBar';
 
 const JobListing = () => {
-  const [jobs, isLoading] = useJobs();
+  const [jobs, isLoading, filterByTags] = useJobs();
   const [selectedTags, setSelectedTags] = useState([]);
 
   console.log({ jobs })
 
   const addTag = (tag) => {
-    if (selectedTags.map(t => t.value).indexOf(tag.value) < 0) {
+    if (selectedTags.indexOf(tag) < 0) {
       setSelectedTags([...selectedTags, tag]);
     }
   };
 
   const removeTag = (tag) => {
-    const tagToRemoveI = selectedTags.findIndex(t => t.value === tag.value);
+    const tagToRemoveI = selectedTags.findIndex(t => t === tag);
     if (tagToRemoveI > -1) {
       selectedTags.splice(tagToRemoveI, 1);
       setSelectedTags([...selectedTags]);
@@ -28,6 +28,10 @@ const JobListing = () => {
   const removeAllTags = () => {
     setSelectedTags([]);
   };
+
+  useEffect(() => {
+    filterByTags(selectedTags);
+  }, [selectedTags]);
 
   return (
     <div>
@@ -40,7 +44,7 @@ const JobListing = () => {
       {isLoading && ('Loading...')}
       {!isLoading && (
         jobs.map(j => (
-          <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
+          !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
         ))
       )}
     </div>

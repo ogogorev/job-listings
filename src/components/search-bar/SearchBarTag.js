@@ -20,7 +20,7 @@ const RemoveButton = styled.button`
 const SearchBarTag = ({ tag, onTagRemove }) => {
   return (
     <>
-      <Text>{tag.value}</Text>
+      <Text>{tag}</Text>
       <RemoveButton onClick={onTagRemove}>x</RemoveButton>
     </>
   );
