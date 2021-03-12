@@ -39,11 +39,11 @@ const JobListing = () => {
 
   return (
     <Container>
-      <SearchBar
+      {/* <SearchBar
         tags={selectedTags} 
         onTagRemove={removeTag}
         onClearButtonClick={removeAllTags}
-      />
+      /> */}
 
       {isLoading && ('Loading...')}
       {!isLoading && (
