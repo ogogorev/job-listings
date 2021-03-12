@@ -26,8 +26,8 @@
     "postedAt": "1d ago",
     "contract": "Part Time",
     "location": "Remote",
-    "languages": ["Python"],
-    "tools": ["React"]
+    "languages": ["Python", "R", "Javascript"],
+    "tools": ["React", "HTML", "CSS", "Git", "Npm"]
   },
   {
     "id": 3,
@@ -35,7 +35,7 @@
     "logo": "account.svg",
     "new": true,
     "featured": false,
-    "position": "Junior Frontend Developer",
+    "position": "Junior Frontend Developer Junior Frontend Developer (USA only)",
     "role": "Frontend",
     "level": "Junior",
     "postedAt": "2d ago",
