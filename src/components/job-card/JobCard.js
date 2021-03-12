@@ -1,22 +1,44 @@
 import styled from 'styled-components';
 
+import { screen } from '../../breakpoints';
+
 const Card = styled.div`
   color: black;
   background-color: white;
   border-radius: 4px;
+  ${props => props.featured && `border-left: 4px solid var(--primary);`}
   
   padding: 0 16px 16px;
   margin-top: 64px; 
   box-shadow: 1px 3px 15px -10px var(--primary);
+
+  @media ${screen.desktop} {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+
+    margin-top: 24px;
+  }
 `;
 
 const Image = styled.img`
   width: 88px;
   height: 88px;
   margin: -44px 0 0;
+
+  @media ${screen.desktop} {
+    margin: 0;
+  }
+`;
+
+const InfoGroup = styled.div`
+  @media ${screen.desktop} {
+    margin: 0 16px;
+  }
 `;
 
 const FirstRow = styled.div`
+  height: 27px;
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -50,12 +72,15 @@ const Info = styled.div`
   display: flex;
   align-items: center;
   margin: 16px 0;
+
+  @media ${screen.desktop} {
+    margin: 0;
+  }
 `;
 
 const InfoText = styled.div`
   color: var(--dark-grayish-cyan);
   font-size: 13px;
-  margin-right: 4px;
 `;
 
 const Dot = styled.span`
@@ -63,32 +88,48 @@ const Dot = styled.span`
   height: 4px;
   background-color: var(--dark-grayish-cyan);
   border-radius: 50%;
-
-  margin-right: 4px;
+  margin: 0 8px;
 `;
 
 const Line = styled.div`
-  height: 2px;
+  height: 1px;
   background-color: var(--dark-grayish-cyan);
   border-radius: 2px;
   margin: 16px 0;
+
+  @media ${screen.desktop} {
+    display: none;
+  }
 `;
 
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media ${screen.desktop} {
+    justify-content: flex-end;
+    margin-left: auto;
+  }
 `;
 
 const TagButton = styled.button`
   font-weight: 700;
   color: var(--primary);
-  backgroundColor: var(--grayish-cyan);
+  background-color: var(--grayish-cyan);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 
   padding: 8px;
   margin: 0 12px 12px 0;
+
+  &:hover {
+    background-color: var(--primary);
+  }
+
+  @media ${screen.desktop} {
+    margin: 6px 0 6px 12px;
+  }
 `;
 
 const JobCard = ({ jobPosting, onTagClick }) => {
@@ -106,26 +147,28 @@ const JobCard = ({ jobPosting, onTagClick }) => {
   } = jobPosting;
 
   return (
-    <Card>
+    <Card featured={featured}>
       <Image src={'../img/' + logo} alt="" />
 
-      <FirstRow>
-        <Company>{company}</Company>
-        {isNew && <Chip>NEW!</Chip>}
-        {featured && <DarkChip>FEATURED</DarkChip>}
-      </FirstRow>
+      <InfoGroup>
+        <FirstRow>
+          <Company>{company}</Company>
+          {isNew && <Chip>NEW!</Chip>}
+          {featured && <DarkChip>FEATURED</DarkChip>}
+        </FirstRow>
 
-      <Position>{position}</Position>
+        <Position>{position}</Position>
 
-      <Info>
-        <InfoText>{postedAt}</InfoText>
-        <Dot />
-        <InfoText>{contract}</InfoText>
-        <Dot />
-        <InfoText>{location}</InfoText>
-      </Info>
+        <Info>
+          <InfoText>{postedAt}</InfoText>
+          <Dot />
+          <InfoText>{contract}</InfoText>
+          <Dot />
+          <InfoText>{location}</InfoText>
+        </Info>
 
-      <Line />
+        <Line />
+      </InfoGroup>
 
       <TagsContainer>
         {tags.map(t => (
