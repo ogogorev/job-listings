@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import jobsData from '../data/data.json';
 
+// TODO: There is a bug: Javascript and JavaScript are handled as different tags.
+
 function getJobs() {
   return new Promise((res, rej) => {
     setTimeout(() => {
