@@ -56,11 +56,11 @@ const JobListing = () => {
     <Container>
       <BackgroundImage />
 
-      {/* <SearchBar
+      <SearchBar
         tags={selectedTags} 
         onTagRemove={removeTag}
         onClearButtonClick={removeAllTags}
-      /> */}
+      />
 
       <JobList>
         {isLoading && ('Loading...')}
