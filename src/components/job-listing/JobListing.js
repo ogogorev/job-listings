@@ -25,9 +25,14 @@ const Content = styled.div`
   margin: -24px 24px 0;
 `;
   
-const JobList = styled.div``;
+const JobList = styled.ul`
+  padding: 0;
+  margin: 0;
 
-// TODO: Use ul and li instead of divs
+  li {
+    list-style-type: none;
+  }
+`;
 
 const JobListing = () => {
   const [jobs, isLoading, filterByTags] = useJobs();
@@ -68,14 +73,23 @@ const JobListing = () => {
           onClearButtonClick={removeAllTags}
         />
 
-        <JobList>
-          {isLoading && ('Loading...')}
-          {!isLoading && (
-            jobs.map(j => (
-              !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
-            ))
-          )}
-        </JobList>
+        {isLoading && ('Loading...')}
+
+        {!isLoading && (
+          <JobList>
+            {jobs.map(j => (
+              !!j.isVisible && (
+                <li>
+                  <JobCard
+                    key={j.data.id}
+                    jobPosting={j.data}
+                    onTagClick={addTag}
+                  />
+                </li>
+              )
+            ))}
+          </JobList>
+        )}
       </Content>
     </Container>
   );
