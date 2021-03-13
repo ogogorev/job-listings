@@ -64,7 +64,13 @@ const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
         ))}
       </TagsContainer>
       
-      {!!tags.length && (<ClearButton onClick={onClearButtonClick}>Clear</ClearButton>)}
+      {!!tags.length && (
+        <ClearButton
+          onClick={onClearButtonClick}
+          title="Remove all tags"
+          aria-label="Remove all tags"
+        >Clear</ClearButton>
+      )}
     </Container>
   );
 };

@@ -33,8 +33,8 @@ const SearchBarTag = ({ tag, onTagRemove }) => {
   return (
     <Container>
       <Text>{tag}</Text>
-      <RemoveButton onClick={onTagRemove}>
-        <img src={require('../../assets/img/icon-remove.svg').default}/>
+      <RemoveButton onClick={onTagRemove} title="Remove tag" aria-label="Remove tag">
+        <img src={require('../../assets/img/icon-remove.svg').default} alt="" />
       </RemoveButton>
     </Container>
   );

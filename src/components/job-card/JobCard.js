@@ -147,7 +147,7 @@ const JobCard = ({ jobPosting, onTagClick }) => {
 
   return (
     <Card featured={featured}>
-      <Image src={'../img/' + logo} alt="" />
+      <Image src={'../img/' + logo} alt="company logo" />
 
       <InfoGroup>
         <FirstRow>
@@ -173,7 +173,8 @@ const JobCard = ({ jobPosting, onTagClick }) => {
         {tags.map(t => (
           <TagButton
             key={t} 
-            type="button"
+            title="Select tag"
+            aria-label="Select tag"
             onClick={() => onTagClick(t)}
           >{t}</TagButton>
         ))}
