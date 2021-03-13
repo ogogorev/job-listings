@@ -173,8 +173,8 @@ const JobCard = ({ jobPosting, onTagClick }) => {
         {tags.map(t => (
           <TagButton
             key={t} 
-            title="Select tag"
-            aria-label="Select tag"
+            title={`Select tag ${t}`}
+            aria-label={`Select tag ${t}`}
             onClick={() => onTagClick(t)}
           >{t}</TagButton>
         ))}
