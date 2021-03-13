@@ -11,6 +11,8 @@ const Container = styled.div`
   padding: 24px;
   border: none;
   border-radius: 2px;
+
+  box-shadow: 1px 3px 15px -10px var(--primary);
 `;
 
 const TagContainer = styled.div`

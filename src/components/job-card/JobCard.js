@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { screen } from '../../breakpoints';
+import { baseTagStyles } from '../tag/Tag';
 
 const Card = styled.div`
   color: black;
@@ -113,14 +114,8 @@ const TagsContainer = styled.div`
 `;
 
 const TagButton = styled.button`
-  font-weight: 700;
-  color: var(--primary);
-  background-color: var(--grayish-cyan);
-  border: none;
-  border-radius: 4px;
+  ${baseTagStyles}
   cursor: pointer;
-
-  padding: 8px;
   margin: 0 12px 12px 0;
 
   &:hover {
