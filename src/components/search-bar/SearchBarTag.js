@@ -22,6 +22,8 @@ const RemoveButton = styled.button`
   border-radius: 0 4px 4px 0;
   cursor: pointer;
 
+  margin: 0;
+
   &:hover {
     background-color: var(--very-dark-grayish-cyan);
   }

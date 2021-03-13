@@ -21,7 +21,8 @@ const BackgroundImage = styled.div`
 `;
 
 const Content = styled.div`
-  margin: -24px 24px 24px;
+  padding-bottom: 24px;
+  margin: -24px 24px 0;
 `;
   
 const JobList = styled.div``;
