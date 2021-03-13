@@ -4,8 +4,23 @@ import styled from 'styled-components';
 import { useJobs } from '../../hooks/jobs.hook';
 import JobCard from '../job-card/JobCard';
 import SearchBar from '../search-bar/SearchBar';
+import { screen } from '../../breakpoints';
 
-const Container = styled.div`
+const backgroundImageMobile = require('../../assets/img/bg-header-mobile.svg');
+const backgroundImageDesktop = require('../../assets/img/bg-header-desktop.svg');
+
+const Container = styled.div``;
+  
+const BackgroundImage = styled.div`
+  height: 156px; 
+  background: url(${backgroundImageMobile.default}), var(--primary);
+
+  @media ${screen.desktop} {
+    background: url(${backgroundImageDesktop.default}), var(--primary);
+  }
+`;
+
+const JobList = styled.div`
   margin: 24px;
 `;
 
@@ -39,18 +54,22 @@ const JobListing = () => {
 
   return (
     <Container>
+      <BackgroundImage />
+
       {/* <SearchBar
         tags={selectedTags} 
         onTagRemove={removeTag}
         onClearButtonClick={removeAllTags}
       /> */}
 
-      {isLoading && ('Loading...')}
-      {!isLoading && (
-        jobs.map(j => (
-          !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
-        ))
-      )}
+      <JobList>
+        {isLoading && ('Loading...')}
+        {!isLoading && (
+          jobs.map(j => (
+            !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
+          ))
+        )}
+      </JobList>
     </Container>
   );
 }
