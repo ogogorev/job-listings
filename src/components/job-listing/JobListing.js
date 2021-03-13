@@ -20,9 +20,13 @@ const BackgroundImage = styled.div`
   }
 `;
 
-const JobList = styled.div`
-  margin: 24px;
+const Content = styled.div`
+  margin: -24px 24px 24px;
 `;
+  
+const JobList = styled.div``;
+
+// TODO: Use ul and li instead of divs
 
 const JobListing = () => {
   const [jobs, isLoading, filterByTags] = useJobs();
@@ -56,20 +60,22 @@ const JobListing = () => {
     <Container>
       <BackgroundImage />
 
-      <SearchBar
-        tags={selectedTags} 
-        onTagRemove={removeTag}
-        onClearButtonClick={removeAllTags}
-      />
+      <Content>
+        <SearchBar
+          tags={selectedTags} 
+          onTagRemove={removeTag}
+          onClearButtonClick={removeAllTags}
+        />
 
-      <JobList>
-        {isLoading && ('Loading...')}
-        {!isLoading && (
-          jobs.map(j => (
-            !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
-          ))
-        )}
-      </JobList>
+        <JobList>
+          {isLoading && ('Loading...')}
+          {!isLoading && (
+            jobs.map(j => (
+              !!j.isVisible && <JobCard key={j.data.id} jobPosting={j.data} onTagClick={addTag} />
+            ))
+          )}
+        </JobList>
+      </Content>
     </Container>
   );
 }

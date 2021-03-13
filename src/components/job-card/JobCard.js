@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { screen } from '../../breakpoints';
 import { baseTagStyles } from '../tag/Tag';
 
+// TODO: Use a css variable for border-radius
+
 const Card = styled.div`
   color: black;
   background-color: white;

@@ -8,39 +8,62 @@ import SearchBarTag from "./SearchBarTag";
 const Container = styled.div`
   display: flex;
   background-color: white;
-  padding: 24px;
   border: none;
-  border-radius: 2px;
-
+  border-radius: 4px;
+  
+  padding: 24px;
   box-shadow: 1px 3px 15px -10px var(--primary);
 `;
 
+const TagsContainer = styled.div`
+  max-width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const TagContainer = styled.div`
-  margin-right: 4px;
+  margin: 4px;
 `;
 
 const ClearButton = styled.button`
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-grayish-cyan);
   background: none;
   border: none;
   cursor: pointer;
+  margin-left: auto;
 
   &:hover {
+    color: var(--primary);
     text-decoration: underline;
   }
 `;
 
+const Placeholder = styled.span`
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-grayish-cyan);
+`;
+
+// TODO: Should it be a list (a11y reasons)? 
+
 const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
   return (
-    <Container>
-      {tags.map(t => (
-        <TagContainer key={t}>
-          <SearchBarTag
-            tag={t}
-            onTagRemove={() => onTagRemove(t)}
-          />
-        </TagContainer>
-      ))}
+    <Container className="search-bar">
+      {!tags.length && <Placeholder>Select a tag</Placeholder>}
 
+      <TagsContainer>
+        {tags.map(t => (
+          <TagContainer key={t}>
+            <SearchBarTag
+              tag={t}
+              onTagRemove={() => onTagRemove(t)}
+            />
+          </TagContainer>
+        ))}
+      </TagsContainer>
+      
       {!!tags.length && (<ClearButton onClick={onClearButtonClick}>Clear</ClearButton>)}
     </Container>
   );
