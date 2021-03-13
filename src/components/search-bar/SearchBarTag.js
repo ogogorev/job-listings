@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import { baseTagStyles } from "../tag/Tag";
 
+const Container = styled.div`
+  display: flex;
+`;
+
 const Text = styled.div`
   ${baseTagStyles}
 
@@ -10,11 +14,12 @@ const Text = styled.div`
 `;
 
 const RemoveButton = styled.button`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   background-color: var(--primary);
-  padding: 4px;
+  padding: 4px 8px;
   border: none;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 4px 4px 0;
   cursor: pointer;
 
   &:hover {
@@ -24,10 +29,12 @@ const RemoveButton = styled.button`
 
 const SearchBarTag = ({ tag, onTagRemove }) => {
   return (
-    <>
+    <Container>
       <Text>{tag}</Text>
-      <RemoveButton onClick={onTagRemove}>x</RemoveButton>
-    </>
+      <RemoveButton onClick={onTagRemove}>
+        <img src={require('../../assets/img/icon-remove.svg').default}/>
+      </RemoveButton>
+    </Container>
   );
 };
 
