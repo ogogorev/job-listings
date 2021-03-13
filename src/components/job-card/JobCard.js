@@ -47,6 +47,7 @@ const FirstRow = styled.div`
 `;
 
 const Company = styled.h4`
+  font-size: 13px;
   color: var(--primary);
   margin: 0 12px 0 0;
 `;
