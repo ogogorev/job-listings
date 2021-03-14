@@ -118,6 +118,7 @@ const TagsContainer = styled.div`
 
 const TagButton = styled.button`
   ${baseTagStyles}
+  font-family: inherit;
   cursor: pointer;
   margin: 0 12px 12px 0;
 

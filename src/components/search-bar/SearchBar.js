@@ -26,6 +26,7 @@ const TagContainer = styled.div`
 `;
 
 const ClearButton = styled.button`
+  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
   color: var(--dark-grayish-cyan);
