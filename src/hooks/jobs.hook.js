@@ -7,7 +7,7 @@ function getJobs() {
   return new Promise((res, rej) => {
     setTimeout(() => {
       res(jobsData);
-    }, 500)
+    }, 3000)
   });
 }
 

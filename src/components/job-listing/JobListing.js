@@ -5,6 +5,7 @@ import { useJobs } from '../../hooks/jobs.hook';
 import JobCard from '../job-card/JobCard';
 import SearchBar from '../search-bar/SearchBar';
 import { screen } from '../../breakpoints';
+import LoadingIndicator from '../loading/LoadingIndicator';
 
 const backgroundImageMobile = require('../../assets/img/bg-header-mobile.svg');
 const backgroundImageDesktop = require('../../assets/img/bg-header-desktop.svg');
@@ -32,6 +33,11 @@ const JobList = styled.ul`
   li {
     list-style-type: none;
   }
+`;
+
+const LoadingContainer = styled.div`
+  text-align: center;
+  margin: 24px 0 0;
 `;
 
 const JobListing = () => {
@@ -73,15 +79,18 @@ const JobListing = () => {
           onClearButtonClick={removeAllTags}
         />
 
-        {isLoading && ('Loading...')}
+        {isLoading && (
+          <LoadingContainer>
+            <LoadingIndicator width={50} height={50} />
+          </LoadingContainer>
+        )}
 
         {!isLoading && (
           <JobList>
             {jobs.map(j => (
               !!j.isVisible && (
-                <li>
+                <li key={j.data.id}>
                   <JobCard
-                    key={j.data.id}
                     jobPosting={j.data}
                     onTagClick={addTag}
                   />
