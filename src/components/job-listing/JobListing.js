@@ -47,13 +47,13 @@ const JobListing = () => {
   console.log({ jobs })
 
   const addTag = (tag) => {
-    if (selectedTags.indexOf(tag) < 0) {
+    if (selectedTags.map(t => t.value).indexOf(tag.value) < 0) {
       setSelectedTags([...selectedTags, tag]);
     }
   };
 
   const removeTag = (tag) => {
-    const tagToRemoveI = selectedTags.findIndex(t => t === tag);
+    const tagToRemoveI = selectedTags.findIndex(t => t.value === tag.value);
     if (tagToRemoveI > -1) {
       selectedTags.splice(tagToRemoveI, 1);
       setSelectedTags([...selectedTags]);
@@ -65,7 +65,7 @@ const JobListing = () => {
   };
 
   useEffect(() => {
-    filterByTags(selectedTags);
+    filterByTags(selectedTags.map(t => t.value));
   }, [selectedTags]);
 
   return (

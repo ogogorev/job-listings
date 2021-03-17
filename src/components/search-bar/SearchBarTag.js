@@ -32,8 +32,8 @@ const RemoveButton = styled.button`
 const SearchBarTag = ({ tag, onTagRemove }) => {
   return (
     <Container>
-      <Text>{tag}</Text>
-      <RemoveButton onClick={onTagRemove} title={"Remove tag " + tag} aria-label={"Remove tag " + tag}>
+      <Text>{tag.label}</Text>
+      <RemoveButton onClick={onTagRemove} title={"Remove tag " + tag.label} aria-label={"Remove tag " + tag.label}>
         <img src={require('../../assets/img/icon-remove.svg').default} alt="" />
       </RemoveButton>
     </Container>

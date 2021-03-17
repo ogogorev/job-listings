@@ -58,7 +58,7 @@ const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
 
       <TagsContainer>
         {tags.map(t => (
-          <TagContainer key={t}>
+          <TagContainer key={t.value}>
             <SearchBarTag
               tag={t}
               onTagRemove={() => onTagRemove(t)}

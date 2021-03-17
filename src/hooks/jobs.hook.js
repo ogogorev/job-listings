@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import jobsData from '../data/data.json';
 
-// TODO: There is a bug: Javascript and JavaScript are handled as different tags.
-
 function getJobs() {
   return new Promise((res, rej) => {
     setTimeout(() => {
@@ -15,10 +13,10 @@ const transformJob = (jobData) => {
   return {
     ...jobData,
     tags: [
-      jobData.role,
-      jobData.level,
-      ...jobData.languages,
-      ...jobData.tools,
+      { value: jobData.role.toLowerCase(), label: jobData.role },
+      { value: jobData.level.toLowerCase(), label: jobData.level },
+      ...jobData.languages.map(l => ({ value: l.toLowerCase(), label: l, })),
+      ...jobData.tools.map(t => ({ value: t.toLowerCase(), label: t, })),
     ],
   };
 };
@@ -36,6 +34,7 @@ export function useJobs() {
     })();
   }, []);
 
+  // tags expected to be an array of strings
   const filterByTags = (tags) => {
     for (let j of jobs) {
       j.isVisible = true;
@@ -46,7 +45,7 @@ export function useJobs() {
       // }
 
       // AND
-      if (tags.length > 0 && !tags.every(t => j.data.tags.indexOf(t) > -1)) {
+      if (tags.length > 0 && !tags.every(t => j.data.tags.map(t => t.value).indexOf(t) > -1)) {
         j.isVisible = false;
       }
     }
