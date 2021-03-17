@@ -15,13 +15,17 @@ const Container = styled.div`
   box-shadow: 1px 3px 15px -10px var(--primary);
 `;
 
-const TagsContainer = styled.div`
+const TagsContainer = styled.ul`
   max-width: 80%;
   display: flex;
   flex-wrap: wrap;
+
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 `;
 
-const TagContainer = styled.div`
+const TagContainer = styled.li`
   margin: 4px;
 `;
 
@@ -46,8 +50,6 @@ const Placeholder = styled.span`
   font-weight: 700;
   color: var(--dark-grayish-cyan);
 `;
-
-// TODO: Should it be a list (a11y reasons)? 
 
 const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
   return (
