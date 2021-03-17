@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   background-color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   
   padding: 24px;
   box-shadow: 1px 3px 15px -10px var(--primary);

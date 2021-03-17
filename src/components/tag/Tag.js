@@ -6,7 +6,7 @@ export const baseTagStyles = css`
   color: var(--primary);
   background-color: var(--grayish-cyan);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   padding: 8px;
 `;

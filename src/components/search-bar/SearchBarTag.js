@@ -10,7 +10,7 @@ const Text = styled.div`
   ${baseTagStyles}
 
   display: inline-block;
-  border-radius: 4px 0 0 4px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
 `;
 
 const RemoveButton = styled.button`
@@ -19,7 +19,7 @@ const RemoveButton = styled.button`
   background-color: var(--primary);
   padding: 4px 8px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   cursor: pointer;
 
   margin: 0;

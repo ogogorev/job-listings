@@ -16,6 +16,10 @@ body {
   --grayish-cyan: hsl(180, 31%, 95%);
   --dark-grayish-cyan: hsl(180, 8%, 72%);
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+
+  /* vars */
+
+  --border-radius: 4px;
 }
 
 .App {

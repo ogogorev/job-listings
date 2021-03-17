@@ -8,7 +8,7 @@ import { baseTagStyles } from '../tag/Tag';
 const Card = styled.div`
   color: black;
   background-color: white;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   ${props => props.featured && `border-left: 4px solid var(--primary);`}
   
   padding: 0 16px 16px;
