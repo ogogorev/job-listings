@@ -132,7 +132,6 @@ const TagButton = styled.button`
 
 const JobCard = ({ jobPosting, onTagClick }) => {
   const {
-    id,
     company,
     logo,
     new: isNew,

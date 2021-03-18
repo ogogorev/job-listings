@@ -66,7 +66,7 @@ const JobListing = () => {
 
   useEffect(() => {
     filterByTags(selectedTags.map(t => t.value));
-  }, [selectedTags]);
+  }, [selectedTags, filterByTags]);
 
   return (
     <Container>
