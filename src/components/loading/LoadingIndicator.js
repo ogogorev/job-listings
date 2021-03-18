@@ -43,22 +43,29 @@ const circles = [
 const LoadingIndicator = ({ width, height }) => {
   return (
     <SVG id="my" width={width} height={height} viewBox={`0 0 ${w} ${h}`} xmlns="http://www.w3.org/2000/svg">
-      {circles.map(({ color, animates }) => (
-        <circle cx={centerX} cy={centerY} r={smallCircleR} fill={color}>
-          {animates.map(({ attrName, begin, values}) => (
-            <animate
-              attributeName={attrName}
-              dur={collapseExpandDur}
-              fill="freeze"
-              begin={begin}
-              values={values}
-              calcMode="spline"
-              keyTimes="0; 1"
-              keySplines={splines}
-            />
-          ))}
-        </circle>
-      ))}
+      {circles.map((circle, i) => {
+        const { color, animates } = circle;
+        return (
+          <circle key={i} cx={centerX} cy={centerY} r={smallCircleR} fill={color}>
+            {animates.map((a, aI) => {
+              const { attrName, begin, values } = a;
+              return (
+                <animate
+                  key={aI}
+                  attributeName={attrName}
+                  dur={collapseExpandDur}
+                  fill="freeze"
+                  begin={begin}
+                  values={values}
+                  calcMode="spline"
+                  keyTimes="0; 1"
+                  keySplines={splines}
+                />
+              );
+            })}
+          </circle>
+        );
+      })}
       
       <MainCircle cx={centerX} cy={centerY} r={mainCircleR}>
         <animate
