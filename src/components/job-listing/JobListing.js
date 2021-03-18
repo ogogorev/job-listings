@@ -63,10 +63,10 @@ const JobListing = () => {
   const removeAllTags = () => {
     setSelectedTags([]);
   };
-
+  
   useEffect(() => {
     filterByTags(selectedTags.map(t => t.value));
-  }, [selectedTags, filterByTags]);
+  }, [selectedTags]);
 
   return (
     <Container>
