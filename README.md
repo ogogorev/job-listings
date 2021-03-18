@@ -1,3 +1,9 @@
+# Job Listings
+
+A simple landing page with job postings. Built using React and Styled Components. The designs are taken from this [challenge](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). All the styles are implemented on my own (haven't used Sketch or Figma).
+
+[Demo](https://job-listings-gamma.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
