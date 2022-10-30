@@ -56,7 +56,7 @@ const Chip = styled.div`
   color: white;
   background-color: var(--primary);
   border-radius: 24px;
-  padding: 8px 8px 6px;
+  padding: 8px;
   margin: 0 4px;
 `;
 
