@@ -10,7 +10,7 @@ const Container = styled.div`
   background-color: white;
   border: none;
   border-radius: var(--border-radius);
-  
+
   padding: 24px;
   box-shadow: 1px 3px 15px -10px var(--primary);
 `;
@@ -54,25 +54,24 @@ const Placeholder = styled.span`
 const SearchBar = ({ tags, onTagRemove, onClearButtonClick }) => {
   return (
     <Container className="search-bar">
-      {!tags.length && <Placeholder>Select a tag</Placeholder>}
+      {!tags.length && <Placeholder>Click any tag to filter</Placeholder>}
 
       <TagsContainer>
-        {tags.map(t => (
+        {tags.map((t) => (
           <TagContainer key={t.value}>
-            <SearchBarTag
-              tag={t}
-              onTagRemove={() => onTagRemove(t)}
-            />
+            <SearchBarTag tag={t} onTagRemove={() => onTagRemove(t)} />
           </TagContainer>
         ))}
       </TagsContainer>
-      
+
       {!!tags.length && (
         <ClearButton
           onClick={onClearButtonClick}
           title="Remove all tags"
           aria-label="Remove all tags"
-        >Clear</ClearButton>
+        >
+          Clear
+        </ClearButton>
       )}
     </Container>
   );
