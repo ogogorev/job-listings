@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
 `;
 
-const Text = styled.div`
+const Text = styled.span`
   ${baseTagStyles}
 
   display: inline-block;
@@ -33,8 +33,12 @@ const SearchBarTag = ({ tag, onTagRemove }) => {
   return (
     <Container>
       <Text>{tag.label}</Text>
-      <RemoveButton onClick={onTagRemove} title={"Remove tag " + tag.label} aria-label={"Remove tag " + tag.label}>
-        <img src={require('../../assets/img/icon-remove.svg').default} alt="" />
+      <RemoveButton
+        onClick={onTagRemove}
+        title={"Remove tag " + tag.label}
+        aria-label={"Remove tag " + tag.label}
+      >
+        <img src={require("../../assets/img/icon-remove.svg").default} alt="" />
       </RemoveButton>
     </Container>
   );
