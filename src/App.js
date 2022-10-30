@@ -1,4 +1,4 @@
-import JobListing from './components/job-listing/JobListing';
+import JobListing from "./components/JobListing/JobListing";
 
 function App() {
   return (

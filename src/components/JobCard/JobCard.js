@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { screen } from '../../breakpoints';
-import { baseTagStyles } from '../tag/Tag';
+import { screen } from "../../breakpoints";
+import { baseTagStyles } from "../Tag/Tag";
 
 const Card = styled.div`
   color: black;
   background-color: white;
   border-radius: var(--border-radius);
-  ${props => props.featured && `border-left: 4px solid var(--primary);`}
-  
+  ${(props) => props.featured && `border-left: 4px solid var(--primary);`}
+
   padding: 0 16px 16px;
-  margin-top: 64px; 
+  margin-top: 64px;
   box-shadow: 1px 3px 15px -10px var(--primary);
 
   @media ${screen.desktop} {
@@ -145,7 +145,7 @@ const JobCard = ({ jobPosting, onTagClick }) => {
 
   return (
     <Card featured={featured}>
-      <Image src={'../img/' + logo} alt="company logo" />
+      <Image src={"../img/" + logo} alt="company logo" />
 
       <InfoGroup>
         <FirstRow>
@@ -168,13 +168,15 @@ const JobCard = ({ jobPosting, onTagClick }) => {
       </InfoGroup>
 
       <TagsContainer>
-        {tags.map(t => (
+        {tags.map((t) => (
           <TagButton
-            key={t.label} 
+            key={t.label}
             title={`Select tag ${t.label}`}
             aria-label={`Select tag ${t.label}`}
             onClick={() => onTagClick(t)}
-          >{t.label}</TagButton>
+          >
+            {t.label}
+          </TagButton>
         ))}
       </TagsContainer>
     </Card>

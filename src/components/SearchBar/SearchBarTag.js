@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { baseTagStyles } from "../tag/Tag";
+import { baseTagStyles } from "../Tag/Tag";
 
 const Container = styled.div`
   display: flex;
